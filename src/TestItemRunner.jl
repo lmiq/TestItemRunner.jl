@@ -66,7 +66,7 @@ function run_testitem(filepath, use_default_usings, package_name, original_code,
     if use_default_usings
         Core.eval(mod, :(using Test))
 
-        if package_name!=""
+        if package_name != ""
             Core.eval(mod, :(using $(Symbol(package_name))))
         end
     end
@@ -85,7 +85,7 @@ function run_tests(path)
     # Find package name
     package_name = ""
     package_filename = isfile(joinpath(path, "Project.toml")) ? joinpath(path, "Project.toml") : isfile(joinpath(path, "JuliaProject.toml")) ? joinpath(path, "JuliaProject.toml") : nothing
-    if package_filename!==nothing
+    if package_filename !== nothing
         try
             project_content = TOML.parsefile(package_filename)
 
